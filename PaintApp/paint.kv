@@ -1,3 +1,5 @@
+#Version 1.0 Initial application build
+
 #:kivy 1.0.9
 #:import utils kivy.utils
 
@@ -12,7 +14,10 @@ ColorBar:
             size_hint: .125, .2
             background_color: [255, 0, 0, 1]
             group: "Color"
-            on_press: root.Red_Button
+            on_state:
+                if self.state == "down": \
+                root.on_touch_down() 
+
 
         ToggleButton:
             #text: "Orange Button"

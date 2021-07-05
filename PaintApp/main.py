@@ -3,8 +3,10 @@ Version 1.0.1
     Version date: 7/5/2021
     Initial application build
     Base application opens and looks as expected.
+        White background has replaced the default black background
     Orange button needs to be corrected
-    Button functionality is not currently working. 
+    Button functionality is not currently working.
+        Clicking the button does not choose the color, application closes.
 '''
 
 #impoting needed Kivy functions
@@ -17,8 +19,7 @@ from kivy.graphics import Color, Ellipse, Line
 from kivy.uix.togglebutton import ToggleButton
 
 class ColorBar(StackLayout):
-    
-    def on_touch_down(self, touch):
+    def red_touch_down(self, touch):
         color = (1, 0, 0)
         with self.canvas:
             Color(*color, mode='hsv')
@@ -26,8 +27,9 @@ class ColorBar(StackLayout):
         Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
         touch.ud['line'] = Line(points=(touch.x, touch.y))
 
-    def on_touch_move(self, touch):
-        touch.ud['line'].points += [touch.x, touch.y]
+    def red_touch_move(self, touch):
+        touch.ud['line'].points += [touch.x, touch.y] 
+
 
 class PaintApp(App):
     pass

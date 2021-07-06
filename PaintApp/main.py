@@ -1,38 +1,49 @@
 '''
-Version 1.0.1 
-    Version date: 7/5/2021
-    Initial application build
-    Base application opens and looks as expected.
-        White background has replaced the default black background
+Version 1.1.0
+    Version date: 7/6/2021  
+    Trying a different approach with the main.py file and the paint.kv file. 
+        Changing the button bar from being a standalone class to making it a child of Paintwidget in main.kv
+        Paint brush has been created and is functioning. Color is a set. Working on being able to select with a button bar.         
+    
+Known Issues: 
     Orange button needs to be corrected
     Button functionality is not currently working.
-        Clicking the button does not choose the color, application closes.
+        Clicking the button does not choose the color, nothing happens. 
+        When using the paint brush, the paint covers the buttons. 
+         
+    
 '''
 
 #impoting needed Kivy functions
 
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.uix.button import Button
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.stacklayout import StackLayout
-from kivy.graphics import Color, Ellipse, Line
-from kivy.uix.togglebutton import ToggleButton
 
-class ColorBar(StackLayout):
-    def red_touch_down(self, touch):
-        color = (1, 0, 0)
-        with self.canvas:
-            Color(*color, mode='hsv')
-        d = 30.
-        Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
-        touch.ud['line'] = Line(points=(touch.x, touch.y))
-
-    def red_touch_move(self, touch):
-        touch.ud['line'].points += [touch.x, touch.y] 
-
-
-class PaintApp(App):
+class PaintWidget(Widget):
     pass
+
+class Canvas(RelativeLayout):
+ 
+    def on_touch_down(self, touch):
+        paint = PaintWidget()
+        paint.center = touch.pos
+        self.add_widget(paint)
+         
+    def on_touch_move(self, touch):
+        paint = PaintWidget()
+        paint.center = touch.pos
+        self.add_widget(paint)
+ 
+# Create the App class       
+class PaintApp(App):
+    def build(self):
+        return Canvas()
+ 
 
 if __name__ == '__main__':
     PaintApp().run()
+
+
+    

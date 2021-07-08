@@ -1,16 +1,19 @@
 '''
-Version 1.1.0
-    Version date: 7/6/2021  
-    Trying a different approach with the main.py file and the paint.kv file. 
-        Changing the button bar from being a standalone class to making it a child of Paintwidget in main.kv
-        Paint brush has been created and is functioning. Color is a set. Working on being able to select with a button bar.         
+Version 1.1.1
+    Version date: 7/7/2021  
+    Removed the StackLayour and ToggleButtons from the paint.kv file. 
+    Added the StackLayout and ToggleButtons to the main.py file
+        Created a seperate class for the ColorBar but that did not work. 
+        Added the ColorBar function to the Canvas class, this also did not work. 
+        
     
 Known Issues: 
     Orange button needs to be corrected
-    Button functionality is not currently working.
-        Clicking the button does not choose the color, nothing happens. 
-        When using the paint brush, the paint covers the buttons. 
+    Buttons are no longer showing on the main app. 
          
+Things to Try:
+    Play with the classes to see where I can get the ColorBar to show up. 
+        Once the color bar is visable I will work on binding the functions for selecting the color. 
     
 '''
 
@@ -18,11 +21,14 @@ Known Issues:
 
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.stacklayout import StackLayout
+from kivy.graphics import Color, Ellipse, Line
 
 class PaintWidget(Widget):
     pass
+
 
 class Canvas(RelativeLayout):
  
@@ -35,7 +41,30 @@ class Canvas(RelativeLayout):
         paint = PaintWidget()
         paint.center = touch.pos
         self.add_widget(paint)
- 
+
+    def ColorBar (StackLayout):
+        ColorBar = StackLayout(orientation ='lr-bt')
+     
+        redbtn = ToggleButton(size_hint= (.125, .2), background_color= [255, 0, 0, 1], group= "Color")
+        orangebtn = ToggleButton(size_hint= (.125, .2), background_color= [255, 0, 0, 1], group= "Color")
+        yellowbtn = ToggleButton(size_hint= (.125, .2), background_color= [255, 255, 0, 1], group= "Color")
+        greenbtn = ToggleButton(size_hint= (.125, .2), background_color= [0, 128, 0, 1], group= "Color")
+        bluebtn = ToggleButton(size_hint= (.125, .2), background_color= [0, 0, 255, 1], group= "Color")
+        purplebtn = ToggleButton(size_hint= (.125, .2), background_color= [128, 0, 128, 1], group= "Color")
+        blackbtn = ToggleButton(size_hint= (.125, .2), background_color= [255, 255, 255, 1], group= "Color")
+        whitebtn = ToggleButton(size_hint= (.125, .2), background_color= [0, 0, 0], group= "Color")
+    
+        ColorBar.add_widget(redbtn)
+        ColorBar.add_widget(orangebtn)
+        ColorBar.add_widget(yellowbtn)
+        ColorBar.add_widget(greenbtn)
+        ColorBar.add_widget(bluebtn)
+        ColorBar.add_widget(purplebtn)
+        ColorBar.add_widget(blackbtn)
+        ColorBar.add_widget(whitebtn)
+       
+        return ColorBar
+
 # Create the App class       
 class PaintApp(App):
     def build(self):

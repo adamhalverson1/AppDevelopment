@@ -1,14 +1,14 @@
 '''
-Version 1.2.0
+Version 1.2.1
     Version date: 7/10/2021  
-    Reverted to code from version 1.0.1. This version had a white background and button bar
+    Reverted to code from version 1.0.1. This version had a white background and ColorBar
                
     
 Known Issues: 
     Orange button needs to be corrected
     Buttons are no longer showing on the main app.
         Working on a solution that will allow me to use the colorbar.py file
-    Nothing is currently working. Need to figure out what is different.
+    
 
          
 Things to Try:

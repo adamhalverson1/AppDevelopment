@@ -1,17 +1,84 @@
 #:kivy 1.0.9
-
-<PaintWidget>:
-    size_hint: None, None
-    size: 10, 10
-    canvas:
-        Ellipse:
-            pos: self.pos
-            size: self.size
-  
-<Canvas>:
+<ColorBar>:
+#White background for the paint app.
     canvas:
         Color:
             rgb: 255, 255, 255, 1
         Rectangle:
-            size: root.size
-            pos: root.pos
+            size: root.width, root.height
+
+#Button bar
+    StackLayout:
+        orientation: 'lr-bt'
+
+        ToggleButton:
+            #text: "Red Button"
+            size_hint: .125, .2
+            background_color: [255, 0, 0, 1]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.on_touch_down() 
+
+
+        ToggleButton:
+            #text: "Orange Button"
+            size_hint: .125 , .2
+            background_color: utils.get_color_from_hex('#FF0000')
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 
+
+        ToggleButton:
+            #text: "Yellow Button"
+            size_hint: .125 , .2
+            background_color: [255, 255, 0, 1]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 
+
+        ToggleButton:
+            #text: "Green Button"
+            size_hint: .125 , .2
+            background_color: [0, 128, 0, 1]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 
+
+        ToggleButton:
+            #text: "Blue Button"
+            size_hint: .125 , .2
+            background_color: [0, 0, 255, 1]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 
+
+        ToggleButton:
+            #text: "Purple Button"
+            size_hint: .125 , .2
+            background_color: [128, 0, 128, 1]
+            group: "Color"
+            on_press: root.Purple_Button
+
+        ToggleButton:
+            #text: "White Button"
+            size_hint: .125 , .2
+            background_color: [255, 255, 255, 1]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 
+
+        ToggleButton:
+            #text: "Black Button"
+            active: True
+            size_hint: .125 , .2
+            background_color: [0, 0, 0]
+            group: "Color"
+            on_state:
+                if self.state == "down": \
+                root.red_touch_down() 

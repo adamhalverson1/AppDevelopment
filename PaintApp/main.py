@@ -1,55 +1,50 @@
 '''
-Version 1.1.2
-    Version date: 7/7/2021  
-    Removed the StackLayour and ToggleButtons from the paint.kv file. 
-    Moved the StackLayout and ToggleButtons to their own file called colorbar.py
-        Importing the ColorBar class in main.py. 
-                
+Version 1.2.0
+    Version date: 7/10/2021  
+    Reverted to code from version 1.0.1. This version had a white background and button bar
+               
     
 Known Issues: 
     Orange button needs to be corrected
     Buttons are no longer showing on the main app.
         Working on a solution that will allow me to use the colorbar.py file
+    Nothing is currently working. Need to figure out what is different.
 
          
 Things to Try:
-   I am out of ideas for now. Will keep playing with the classes and functions to see what I can get to work
-   
+    Create a class for each color in the ColorBar. 
+    In the App class, create a variable for a StackLayout and add each button color with add_widget.
+    Reverted to old version to test. 
+        Old version had the desired background color and button bar. 
+       
 '''
 
 #impoting needed Kivy functions
 
 from kivy.app import App
+from kivy.uix.layout import Layout
 from kivy.uix.widget import Widget
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.stacklayout import StackLayout
+from kivy.graphics import Color, Ellipse, Line
 
-#importing the ColorBar class created in the colorbar.py file.
-from colorbar import ColorBar
 
-#creating the paint widget. This is where the color will be selected 
-class PaintWidget(Widget):
-    pass
-
-#creating the canvas and allowing it to recieve touch inputs. 
-class Canvas(RelativeLayout):
-
-    def on_touch_down(self, touch):
-        paint = PaintWidget()
-        paint.center = touch.pos
-        self.add_widget(paint)
-         
-    def on_touch_move(self, touch):
-        paint = PaintWidget()
-        paint.center = touch.pos
-        self.add_widget(paint)
- 
-# Create the App class       
-class PaintApp(App):
+class ColorBar(StackLayout):
     
-    def build(self):              
-        return Canvas()
+    def on_touch_down(self, touch):
+        color = (1, 0, 0)
+        with self.canvas:
+            Color(*color, mode='hsv')
+        d = 30.
+        Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
+        touch.ud['line'] = Line(points=(touch.x, touch.y))
+
+    def on_touch_move(self, touch):
+        touch.ud['line'].points += [touch.x, touch.y] 
+    
+class PaintApp(App):
+    pass
 
 if __name__ == '__main__':
     PaintApp().run()

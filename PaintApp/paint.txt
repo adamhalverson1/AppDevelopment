@@ -1,0 +1,38 @@
+This file is used for pasting code that I am testing removing. 
+
+
+        ToggleButton:
+            text: "Orange Button" 
+            size_hint: .125, .2
+            background_color: [255, 0, 0, 1]
+            group: "Color"
+        ToggleButton:
+            text: "Yellow Button"
+            size_hint: .125, .2
+            background_color: [255, 255, 0, 1]
+            group: "Color"
+        ToggleButton:
+            text: "Green Button"
+            size_hint: .125, .2
+            background_color: [0, 255, 0, 1]
+            group: "Color" 
+        ToggleButton:
+            text: "Blue Button"
+            size_hint: .125, .2
+            background_color: [0, 0, 255, 1]
+            group: "Color"
+        ToggleButton:
+            text: "Purple Button"
+            size_hint: .125, .2
+            background_color: [128, 0, 128, 1]
+            group: "Color"
+        ToggleButton:
+            text: "White Button"
+            size_hint: .125, .2
+            background_color: [255, 255, 255, 1]
+            group: "Color"
+        ToggleButton:
+            text: "Black Button"
+            size_hint: .125, .2
+            background_color: [0, 0, 0, 1]
+            group: "Color"

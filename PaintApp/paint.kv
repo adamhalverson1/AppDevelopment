@@ -17,44 +17,39 @@ ColorBar:
         orientation: 'lr-bt'
 
         ToggleButton:
-            #text: "Red Button"
+            id: 'redbtn'
             size_hint: .125, .2
             background_color: [255, 0, 0, 1]
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.on_touch_down() 
-
-
+            on_press: root.btn_id(self)
+            
         ToggleButton:
             #text: "Orange Button"
+            id: 'orangebtn'
             size_hint: .125 , .2
             background_color: utils.get_color_from_hex('#FF0000')
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "Yellow Button"
+            id: 'yellowbtn'
             size_hint: .125 , .2
             background_color: [255, 255, 0, 1]
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "Green Button"
+            id: 'greenbtn'
             size_hint: .125 , .2
             background_color: [0, 128, 0, 1]
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "Blue Button"
+            id: 'bluebtn'
             size_hint: .125 , .2
             background_color: [0, 0, 255, 1]
             group: "Color"
@@ -64,26 +59,25 @@ ColorBar:
 
         ToggleButton:
             #text: "Purple Button"
+            id: 'purplebtn'
             size_hint: .125 , .2
             background_color: [128, 0, 128, 1]
             group: "Color"
-            on_press: root.Purple_Button
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "White Button"
+            id: 'whitebtm'
             size_hint: .125 , .2
             background_color: [255, 255, 255, 1]
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "Black Button"
-            active: True
+            id: 'blackbtn'
+            state: 'down'
             size_hint: .125 , .2
             background_color: [0, 0, 0]
             group: "Color"
-            on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)

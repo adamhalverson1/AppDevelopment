@@ -1,6 +1,15 @@
 #:kivy 1.0.9
 #:import utils kivy.utils
 
+#Paint brush size and shape
+<PaintWidget>:
+    size_hint: None, None
+    size: 10, 10
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
 ColorBar:
 
 <ColorBar>:
@@ -16,16 +25,17 @@ ColorBar:
     StackLayout:
         orientation: 'lr-bt'
 
-        ToggleButton:
-            id: 'redbtn'
+        Button:
+            id: redbtn
+            text: "red"
             size_hint: .125, .2
             background_color: [255, 0, 0, 1]
             group: "Color"
-            on_press: root.btn_id(self)
-            
+            on_press: root.paint_color()
+
         ToggleButton:
             #text: "Orange Button"
-            id: 'orangebtn'
+            id: orangebtn
             size_hint: .125 , .2
             background_color: utils.get_color_from_hex('#FF0000')
             group: "Color"
@@ -54,8 +64,7 @@ ColorBar:
             background_color: [0, 0, 255, 1]
             group: "Color"
             on_state:
-                if self.state == "down": \
-                root.red_touch_down() 
+            on_press: root.btn_id(self)
 
         ToggleButton:
             #text: "Purple Button"

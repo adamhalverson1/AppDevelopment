@@ -28,9 +28,9 @@ from kivy.graphics import Color, Ellipse, Line
 #Creating the Paint Brush widget
 class PaintWidget(Widget):
     def paint_color(self):
-    color = ToggleButton()
-        if self.value:
-            result.state = 'down'
+    #color = ToggleButton()
+     #   if self.value:
+      #      result.state = 'down'
     
     #Changing the color to Red if the Red Button is selected.
         self.ids.redbtn.text = 'redbtn has been pressed.'

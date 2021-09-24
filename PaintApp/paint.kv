@@ -1,92 +1,61 @@
 #:kivy 1.0.9
-#:import utils kivy.utils
 
-#Paint brush size and shape
 <PaintWidget>:
     size_hint: None, None
     size: 10, 10
     canvas:
+        Color:
+            rgb: 0, 0, 0, 1
         Ellipse:
             pos: self.pos
             size: self.size
 
-ColorBar:
-
-<ColorBar>:
-
-#White background for the paint app.
+<Canvas>:
     canvas:
         Color:
             rgb: 255, 255, 255, 1
         Rectangle:
-            size: root.width, root.height
-
-#Button bar
+            size: root.size
+            pos: root.pos
     StackLayout:
         orientation: 'lr-bt'
-
-        Button:
-            id: redbtn
-            text: "red"
+        ToggleButton:
+            text: "Red Button"
             size_hint: .125, .2
             background_color: [255, 0, 0, 1]
             group: "Color"
-            on_press: root.paint_color()
-
         ToggleButton:
-            #text: "Orange Button"
-            id: orangebtn
-            size_hint: .125 , .2
-            background_color: utils.get_color_from_hex('#FF0000')
+            text: "Orange Button" 
+            size_hint: .125, .2
+            background_color: [255, 0, 0, 1]
             group: "Color"
-            on_press: root.btn_id(self)
-
         ToggleButton:
-            #text: "Yellow Button"
-            id: 'yellowbtn'
-            size_hint: .125 , .2
+            text: "Yellow Button"
+            size_hint: .125, .2
             background_color: [255, 255, 0, 1]
             group: "Color"
-            on_press: root.btn_id(self)
-
         ToggleButton:
-            #text: "Green Button"
-            id: 'greenbtn'
-            size_hint: .125 , .2
-            background_color: [0, 128, 0, 1]
-            group: "Color"
-            on_press: root.btn_id(self)
-
+            text: "Green Button"
+            size_hint: .125, .2
+            background_color: [0, 255, 0, 1]
+            group: "Color" 
         ToggleButton:
-            #text: "Blue Button"
-            id: 'bluebtn'
-            size_hint: .125 , .2
+            text: "Blue Button"
+            size_hint: .125, .2
             background_color: [0, 0, 255, 1]
             group: "Color"
-            on_state:
-            on_press: root.btn_id(self)
-
         ToggleButton:
-            #text: "Purple Button"
-            id: 'purplebtn'
-            size_hint: .125 , .2
+            text: "Purple Button"
+            size_hint: .125, .2
             background_color: [128, 0, 128, 1]
             group: "Color"
-            on_press: root.btn_id(self)
-
         ToggleButton:
-            #text: "White Button"
-            id: 'whitebtm'
-            size_hint: .125 , .2
+            text: "White Button"
+            size_hint: .125, .2
             background_color: [255, 255, 255, 1]
             group: "Color"
-            on_press: root.btn_id(self)
-
         ToggleButton:
-            #text: "Black Button"
-            id: 'blackbtn'
-            state: 'down'
-            size_hint: .125 , .2
-            background_color: [0, 0, 0]
+            text: "Black Button"
+            size_hint: .125, .2
+            background_color: [0, 0, 0, 1]
             group: "Color"
-            on_press: root.btn_id(self)

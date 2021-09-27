@@ -1,78 +1,90 @@
 <PaintWidget>:
-    StackLayout:
-        orientation: 'lr-tb'
-        #size: .125, 1
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 255, 255, 255, 1
+            Rectangle:
+                size: root.width, root.height
 
-        ToggleButton:
-            id: redbtn
-            text: "red"
-            size_hint: .125, .1
-            #background_color: [255, 0, 0, 1]
-            group: "Color"
-           
+        StackLayout:
+            orientation: 'lr-tb'
+            size: .125, 1
 
-        ToggleButton:
-            text: "Orange Button"
-            id: orangebtn
-            size_hint: .125 , .1
-            #background_color: 
-            group: "Color"
-            
+            ToggleButton:
+                id: redbtn
+                text: "red"
+                size_hint: .125, .1
+                #background_color: [255, 0, 0, 1]
+                group: "Color"
+                on_press: root.on_state()
 
-        ToggleButton:
-            text: "Yellow Button"
-            id: 'yellowbtn'
-            size_hint: .125 , .1
-            #background_color: [255, 255, 0, 1]
-            group: "Color"
-            
+            ToggleButton:
+                text: "Orange Button"
+                id: orangebtn
+                size_hint: .125 , .1
+                #background_color:
+                group: "Color"
+                on_press: root.on_state()
 
-        ToggleButton:
-            text: "Green Button"
-            id: 'greenbtn'
-            size_hint: .125 , .1
-            #background_color: [0, 128, 0, 1]
-            group: "Color"
-            
+            ToggleButton:
+                text: "Yellow Button"
+                id: yellowbtn
+                size_hint: .125 , .1
+                #background_color: [255, 255, 0, 1]
+                group: "Color"
+                on_press: root.on_state()
 
-        ToggleButton:
-            text: "Blue Button"
-            id: 'bluebtn'
-            size_hint: .125 , .1
-            #background_color: [0, 0, 255, 1]
-            group: "Color"
-            on_state:
-            
-
-        ToggleButton:
-            text: "Purple Button"
-            id: 'purplebtn'
-            size_hint: .125 , .1
-            #background_color: [128, 0, 128, 1]
-            group: "Color"
-            
-
-        ToggleButton:
-            text: "White Button"
-            id: 'whitebtm'
-            size_hint: .125 , .1
-            #background_color: [255, 255, 255, 1]
-            group: "Color"
-            
-
-        ToggleButton:
-            text: "Black Button"
-            id: 'blackbtn'
-            state: 'down'
-            size_hint: .125 , .1
-            #background_color: [0, 0, 0]
-            group: "Color"
+            ToggleButton:
+                text: "Green Button"
+                id: greenbtn
+                size_hint: .125 , .1
+                #background_color: [0, 128, 0, 1]
+                group: "Color"
+                on_press: root.on_state()
 
 
-    FloatLayout:
-        size: .1, .1
+            ToggleButton:
+                text: "Blue Button"
+                id: bluebtn
+                size_hint: .125 , .1
+                #background_color: [0, 0, 255, 1]
+                group: "Color"
+                on_press: root.on_state()
 
-        Button:
-            text: "clear"
-            size_hint: .1, .1
-            pos: root.x, root.y
+            ToggleButton:
+                text: "Purple Button"
+                id: purplebtn
+                size_hint: .125 , .1
+                #background_color: [128, 0, 128, 1]
+                group: "Color"
+                on_press: root.on_state()
+
+
+            ToggleButton:
+                text: "White Button"
+                id: whitebtn
+                size_hint: .125 , .1
+                #background_color: [255, 255, 255, 1]
+                group: "Color"
+                on_press: root.on_state()
+
+
+            ToggleButton:
+                text: "Black Button"
+                id: blackbtn
+                state: 'down'
+                size_hint: .125 , .1
+                #background_color: [0, 0, 0]
+                group: "Color"
+                on_press: root.on_state()
+                
+
+
+        FloatLayout:
+            size: .1, .1
+
+            Button:
+                id: clearbtn
+                text: "clear"
+                size_hint: .1, .1
+                pos: root.x, root.y

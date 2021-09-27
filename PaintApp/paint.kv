@@ -1,58 +1,78 @@
 <PaintWidget>:
-    RelativeLayout:
-        canvas:
-            Color:
-                rgb: 255, 255, 255, 1
-            Rectangle:
-                size: root.size
-                pos: root.pos
-                
     StackLayout:
-        
-        orientation: 'lr-bt'
+        orientation: 'lr-tb'
+        #size: .125, 1
+
         ToggleButton:
-            id: redbutton
-            text: "Red Button"
-            size_hint: .6, .6            
+            id: redbtn
+            text: "red"
+            size_hint: .125, .1
             #background_color: [255, 0, 0, 1]
             group: "Color"
-            #on_press: root.button_press                    
+           
+
         ToggleButton:
-            text: "Orange Button" 
-            size_hint: .6, .6
-            #background_color: [255, 0, 0, 1]
+            text: "Orange Button"
+            id: orangebtn
+            size_hint: .125 , .1
+            #background_color: 
             group: "Color"
+            
+
         ToggleButton:
             text: "Yellow Button"
-            size_hint: .6, .6
+            id: 'yellowbtn'
+            size_hint: .125 , .1
             #background_color: [255, 255, 0, 1]
             group: "Color"
+            
+
         ToggleButton:
             text: "Green Button"
-            size_hint: .6, .6
-            #background_color: [0, 255, 0, 1]
-            group: "Color" 
+            id: 'greenbtn'
+            size_hint: .125 , .1
+            #background_color: [0, 128, 0, 1]
+            group: "Color"
+            
+
         ToggleButton:
             text: "Blue Button"
-            size_hint: .6, .6
+            id: 'bluebtn'
+            size_hint: .125 , .1
             #background_color: [0, 0, 255, 1]
             group: "Color"
+            on_state:
+            
+
         ToggleButton:
             text: "Purple Button"
-            size_hint: .6, .6
+            id: 'purplebtn'
+            size_hint: .125 , .1
             #background_color: [128, 0, 128, 1]
             group: "Color"
+            
+
         ToggleButton:
             text: "White Button"
-            size_hint: .6, .6
+            id: 'whitebtm'
+            size_hint: .125 , .1
             #background_color: [255, 255, 255, 1]
             group: "Color"
+            
+
         ToggleButton:
             text: "Black Button"
-            size_hint: .6, .6
-            #background_color: [0, 0, 0, 1]
+            id: 'blackbtn'
+            state: 'down'
+            size_hint: .125 , .1
+            #background_color: [0, 0, 0]
             group: "Color"
-        Button:
-            text: "Clear"
-            size_hint: .6, 1
 
+
+    FloatLayout:
+        size: .1, .1
+
+        Button:
+            text: "clear"
+            size_hint: .1, .1
+            pos: root.x, root.y

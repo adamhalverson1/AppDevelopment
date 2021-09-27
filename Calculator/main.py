@@ -29,8 +29,7 @@ class MyLayout(Widget):
         if prior == "0":
             self.ids.calc_input.text = ''
             self.ids.calc_input.text = f'{button}'
-        else:
-            self.ids.calc_input.text = f'{prior}{button}'
+
 
     def add(self):
         prior = self.ids.calc_input.text

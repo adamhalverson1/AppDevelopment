@@ -1,61 +1,58 @@
-#:kivy 1.0.9
-
 <PaintWidget>:
-    size_hint: None, None
-    size: 10, 10
-    canvas:
-        Color:
-            rgb: 0, 0, 0, 1
-        Ellipse:
-            pos: self.pos
-            size: self.size
-
-<Canvas>:
-    canvas:
-        Color:
-            rgb: 255, 255, 255, 1
-        Rectangle:
-            size: root.size
-            pos: root.pos
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 255, 255, 255, 1
+            Rectangle:
+                size: root.size
+                pos: root.pos
+                
     StackLayout:
+        
         orientation: 'lr-bt'
         ToggleButton:
+            id: redbutton
             text: "Red Button"
-            size_hint: .125, .2
-            background_color: [255, 0, 0, 1]
+            size_hint: .6, .6            
+            #background_color: [255, 0, 0, 1]
             group: "Color"
+            #on_press: root.button_press                    
         ToggleButton:
             text: "Orange Button" 
-            size_hint: .125, .2
-            background_color: [255, 0, 0, 1]
+            size_hint: .6, .6
+            #background_color: [255, 0, 0, 1]
             group: "Color"
         ToggleButton:
             text: "Yellow Button"
-            size_hint: .125, .2
-            background_color: [255, 255, 0, 1]
+            size_hint: .6, .6
+            #background_color: [255, 255, 0, 1]
             group: "Color"
         ToggleButton:
             text: "Green Button"
-            size_hint: .125, .2
-            background_color: [0, 255, 0, 1]
+            size_hint: .6, .6
+            #background_color: [0, 255, 0, 1]
             group: "Color" 
         ToggleButton:
             text: "Blue Button"
-            size_hint: .125, .2
-            background_color: [0, 0, 255, 1]
+            size_hint: .6, .6
+            #background_color: [0, 0, 255, 1]
             group: "Color"
         ToggleButton:
             text: "Purple Button"
-            size_hint: .125, .2
-            background_color: [128, 0, 128, 1]
+            size_hint: .6, .6
+            #background_color: [128, 0, 128, 1]
             group: "Color"
         ToggleButton:
             text: "White Button"
-            size_hint: .125, .2
-            background_color: [255, 255, 255, 1]
+            size_hint: .6, .6
+            #background_color: [255, 255, 255, 1]
             group: "Color"
         ToggleButton:
             text: "Black Button"
-            size_hint: .125, .2
-            background_color: [0, 0, 0, 1]
+            size_hint: .6, .6
+            #background_color: [0, 0, 0, 1]
             group: "Color"
+        Button:
+            text: "Clear"
+            size_hint: .6, 1
+

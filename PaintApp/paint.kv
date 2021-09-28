@@ -12,73 +12,69 @@
 
             ToggleButton:
                 id: redbtn
-                text: "red"
+                text: "Red Button"
                 size_hint: .125, .1
-                #background_color: [255, 0, 0, 1]
+                background_color: [255, 0, 0, 1]
                 group: "Color"
-                on_press: root.on_state()
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Orange Button"
                 id: orangebtn
                 size_hint: .125 , .1
-                #background_color:
+                background_color:
                 group: "Color"
-                on_press: root.on_state()
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Yellow Button"
                 id: yellowbtn
                 size_hint: .125 , .1
-                #background_color: [255, 255, 0, 1]
+                background_color: [255, 255, 0, 1]
                 group: "Color"
-                on_press: root.on_state()
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Green Button"
                 id: greenbtn
                 size_hint: .125 , .1
-                #background_color: [0, 128, 0, 1]
+                background_color: [0, 128, 0, 1]
                 group: "Color"
-                on_press: root.on_state()
-
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Blue Button"
                 id: bluebtn
                 size_hint: .125 , .1
-                #background_color: [0, 0, 255, 1]
+                background_color: [0, 0, 255, 1]
                 group: "Color"
-                on_press: root.on_state()
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Purple Button"
                 id: purplebtn
                 size_hint: .125 , .1
-                #background_color: [128, 0, 128, 1]
+                background_color: [128, 0, 128, 1]
                 group: "Color"
-                on_press: root.on_state()
+                on_press: root.set_color(self.background_color)
 
 
             ToggleButton:
                 text: "White Button"
                 id: whitebtn
                 size_hint: .125 , .1
-                #background_color: [255, 255, 255, 1]
+                background_color: [255, 255, 255, 1]
                 group: "Color"
-                on_press: root.on_state()
-
+                on_press: root.set_color(self.background_color)
 
             ToggleButton:
                 text: "Black Button"
                 id: blackbtn
                 state: 'down'
                 size_hint: .125 , .1
-                #background_color: [0, 0, 0]
+                background_color: [0, 0, 0]
                 group: "Color"
-                on_press: root.on_state()
-                
-
+                on_press: root.set_color(self.background_color)
 
         FloatLayout:
             size: .1, .1
@@ -88,3 +84,4 @@
                 text: "clear"
                 size_hint: .1, .1
                 pos: root.x, root.y
+                on_press: root.clear_canvas()

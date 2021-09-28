@@ -1,27 +1,19 @@
 '''
-Version 2.0.3
-    Version date: 9/27/2021  
-        White Canvas 
-        Moved color bar to the top of the window
-        Clear button is in the lower left. 
-            Struggling with getting this in the appropriate location.
-            Clear button is part of a float layout within the Stack layout. 
-        Buttons are able to print out a string that is defined in main.py
-            Will review how to get the colors associated to this. 
-            
-
-    Working on getting the Buttons to print the button color has been pressed. 
-    Working on Canvas color. Default is black, will work with that to try and not over complicate the code for now.
-        Desired outcome would be having the option for a white or black canvas. 
-    Once I can figure out that interaction I will hopefully be able to select the paint color using
-    the button.
-    
+Version 2.1.0
+    Version date: 9/28/2021  
+        Complete rework of python code.
+        If else statements did not seem to be the key. 
+        Added some new functions that appear to be closer to the desired end result. 
+        Updated on_press in paint.kv to use the new function
+            root.set_color(self.background_color)
+        Clear button functionality is now present. 
     
 Known Issues: 
     Button click does not select the color to be used on the canvas
+        The brush color is a light blue
+    Buttons are not exlucded from the Canvas and can be colored on.
 
 Things to Try:
-
        
 '''
 
@@ -34,54 +26,46 @@ from kivy.uix.stacklayout import StackLayout
 from kivy.uix.button import Button
 from kivy.graphics import Color, Ellipse, Line
 from kivy.lang import Builder
+from kivy.utils import get_color_from_hex
+
 
 #Creating the paint widget
 class PaintWidget(StackLayout):
-    
-    def on_state(self):
-        #Red button functionality
-        if self.ids.redbtn.state == "down":
-            print('Red button press')
-            color = [255, 0, 0, 1]
 
-        #Orange button functionality
-        elif self.ids.orangebtn.state =="down":
-            print("Orange button press")
+    #Touch input functionality.
+    def on_touch_down(self, touch):
+        if Widget.on_touch_down(self, touch):
+            return True
+        
+        with self.canvas:
+            Color(*get_color_from_hex('#0080FF80'))
+            Line(circle=(touch.x, touch.y, 2), width=2)
+            touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)     
 
-        #Yellow button functionality
-        elif self.ids.yellowbtn.state =="down":
-            print("Yellow button press")
+    #Touch movement functionality.
+    def on_touch_move(self, touch):                               
+        if 'current_line' in touch.ud:
+            touch.ud['current_line'].points += (touch.x, touch.y)
 
-        #Green button functionality 
-        elif self.ids.greenbtn.state =="down":
-            print("Green button press")
+    #Color picking functionality.
+    def set_color(self, new_color):
+        self.canvas.add(Color(*new_color))    
 
-        #Blue button functionality
-        elif self.ids.bluebtn.state =="down":
-            print("Blue button press")
+    #Clear button functionality. 
+    def clear_canvas(self):        
+        self.canvas.clear()
+        saved = self.children[:]
+        self.clear_widgets()        
+        for widget in saved:
+            self.add_widget(widget)
 
-        #Purple button functionality
-        elif self.ids.purplebtn.state =="down":
-            print("Purple button press")
-
-        #White button functionality
-        elif self.ids.whitebtn.state =="down":
-            print("White button press")
-
-        #Black button functionality.
-        elif self.ids.blackbtn.state =="down":
-            print("Black button press")
-
-        def on_touch_down(self, touch):
-            with self.canvas:
-                Color(color)
-                d = 30.
-                Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
 
 # Create the App class       
 class PaintApp(App):
     def build(self):
-        return PaintWidget()
+        self.paint_widget = PaintWidget()
+        self.paint_widget.set_color(get_color_from_hex('#2980B9'))
+        return self.paint_widget
 
 #Running the app. 
 if __name__ == '__main__':

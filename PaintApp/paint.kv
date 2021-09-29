@@ -1,4 +1,75 @@
 <PaintWidget>:
+    StackLayout:
+        orientation: 'lr-tb'
+        size: .125, 1
+
+        ToggleButton:
+            id: redbtn
+            #text: "Red Button"
+            size_hint: .125, .1
+            background_color: 2.55, .25, .25, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Orange Button"
+            id: orangebtn
+            size_hint: .125 , .1
+            background_color: 2.55, 1.40, .25, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Yellow Button"
+            id: yellowbtn
+            size_hint: .125 , .1
+            background_color: 2.55, 2.55, .25, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Green Button"
+            id: greenbtn
+            size_hint: .125 , .1
+            background_color: 0, 1.68, 0, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Blue Button"
+            id: bluebtn
+            size_hint: .125 , .1
+            background_color: 0, .84, 1.68, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Purple Button"
+            id: purplebtn
+            size_hint: .125 , .1
+            background_color: .84, 0, 1.68, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+
+        ToggleButton:
+            #text: "White Button"
+            id: whitebtn
+            size_hint: .125 , .1
+            background_color: 2.55, 2.55, 2.55, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+        ToggleButton:
+            #text: "Black Button"
+            id: blackbtn
+            state: 'down'
+            size_hint: .125 , .1
+            background_color: 0, 0, 0, 1
+            group: "Color"
+            on_press: root.set_color(self.background_color)
+
+<Canvas>:
     RelativeLayout:
         canvas:
             Color:
@@ -6,82 +77,8 @@
             Rectangle:
                 size: root.width, root.height
 
-        StackLayout:
-            orientation: 'lr-tb'
-            size: .125, 1
-
-            ToggleButton:
-                id: redbtn
-                text: "Red Button"
-                size_hint: .125, .1
-                background_color: [255, 0, 0, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Orange Button"
-                id: orangebtn
-                size_hint: .125 , .1
-                background_color:
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Yellow Button"
-                id: yellowbtn
-                size_hint: .125 , .1
-                background_color: [255, 255, 0, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Green Button"
-                id: greenbtn
-                size_hint: .125 , .1
-                background_color: [0, 128, 0, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Blue Button"
-                id: bluebtn
-                size_hint: .125 , .1
-                background_color: [0, 0, 255, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Purple Button"
-                id: purplebtn
-                size_hint: .125 , .1
-                background_color: [128, 0, 128, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-
-            ToggleButton:
-                text: "White Button"
-                id: whitebtn
-                size_hint: .125 , .1
-                background_color: [255, 255, 255, 1]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-            ToggleButton:
-                text: "Black Button"
-                id: blackbtn
-                state: 'down'
-                size_hint: .125 , .1
-                background_color: [0, 0, 0]
-                group: "Color"
-                on_press: root.set_color(self.background_color)
-
-        FloatLayout:
-            size: .1, .1
-
-            Button:
-                id: clearbtn
-                text: "clear"
-                size_hint: .1, .1
-                pos: root.x, root.y
-                on_press: root.clear_canvas()
+<ClearButton>:
+    FloatLayout:
+        Button:
+            text: "Clear"
+            size_hint: .5, .5

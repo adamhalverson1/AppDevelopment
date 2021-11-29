@@ -1,0 +1,38 @@
+<GolfBall>:
+    size: 25, 25
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Putter>:
+    size: 25, 35
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<GolfCourse>:
+    ball: golf_ball
+    player: player
+
+    canvas:
+        Color: 
+            rgb: 0, .30, 0
+        Rectangle:
+            size: 10, self.height
+            pos: self.center_x -5, 0
+            Color:
+                
+
+    Putter:
+        id: player
+        x: root.x
+        center_y: root.center_y
+
+
+    GolfBall:
+        id: golf_ball
+        center: self.parent.center
+

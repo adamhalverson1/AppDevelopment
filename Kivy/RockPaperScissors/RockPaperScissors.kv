@@ -1,0 +1,26 @@
+<RockPaperScissors>
+    FloatLayout:
+        size: root.width, root.height
+    
+        Label:
+            text: 'Rock Paper Scissors'
+            pos_hint: {"x":0, "top":1.25}
+
+        BoxLayout:
+            Button:
+                text: 'Rock'
+                id: rock
+                size_hint: .5, .5
+                on_press: playGame(self)
+    
+            Button:
+                text: 'Paper'
+                id: paper
+                size_hint: .5, .5
+                on_press: playGame(self)
+
+            Button:
+                text: 'Scissors'
+                id: scissors
+                size_hint: .5, .5
+                on_press: playGame(self)

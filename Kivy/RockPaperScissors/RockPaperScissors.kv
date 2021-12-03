@@ -1,31 +1,57 @@
 <RockPaperScissors>
     FloatLayout:
         size: root.width, root.height
+
+        canvas:
+            Color:
+                rgb: .44, .50, .60, 1
+            Rectangle:
+                size: root.width, root.height
     
         Label:
+            id: message
             text: 'Rock Paper Scissors'
-            pos_hint: {"x":0, "top":1.25}
-
-        TextInput:
-            id: userinput
-            size_hint: (1, .15)
-            pos_hint: {'x': 1.25 , 'y': 1.25}
+            pos_hint: {"x":0, "top":1.4}
+        
+        Label:
+            id: player
+            text: "0"
+            pos_hint: {"right":.6, "top":1.25}
+        Label:
+            text: "Player Score"
+            pos_hint: {"right":.6, "top":1.30}
+        Label:
+            id: pchoice
+            text: ""
+            pos_hint: {"right":.6, "top":1.20}
+        
+        Label:
+            id: computer
+            text: "0"
+            pos_hint: {"right":1.38, "top":1.25}
+        Label:
+            text: "Computer Score"
+            pos_hint: {"right":1.38, "top":1.30}
+        Label:
+            id: cchoice
+            text: ""
+            pos_hint: {"right":1.38, "top":1.20}
 
         BoxLayout:
             Button:
                 text: 'Rock'
                 id: rock
                 size_hint: .5, .5
-                on_press: root.button_press(user_choice='ROCK')
+                on_press: root.button_press(user_choice='Rock')
     
             Button:
                 text: 'Paper'
                 id: paper
                 size_hint: .5, .5
-                on_press: root.button_press(user_choice='PAPER')
+                on_press: root.button_press(user_choice='Paper')
 
             Button:
                 text: 'Scissors'
                 id: scissors
                 size_hint: .5, .5
-                on_press: root.button_press(user_choice='SCISSORS')
+                on_press: root.button_press(user_choice='Scissors')

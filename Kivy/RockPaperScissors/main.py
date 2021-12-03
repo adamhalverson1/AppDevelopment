@@ -1,7 +1,7 @@
 '''
 Rock Paper Scissors 
-    Version: 1.2
-    Version Date: 12/1/2021
+    Version: 1.3
+    Version Date: 12/3/2021
 
 Version Details:
     This is the initial build of a rock paper scissors game built using python and kivy. 
@@ -13,22 +13,24 @@ Version Details:
     Created a computer variable that randomly selects rock, paper or scissors. 
     Coded the rock paper scissors game. Results are printed to the console. 
         This is fully functional. 
-
-        
+    Added a slate grey background
+    Results are being writted to the GUI by updating the label text. 
+    Added labels that display the computer and user choice. 
+    Adjust label positions. 
 
 To Do
-    Write the results to the GUI
     Keep count of the score and write that to the GUI. 
     Make the GUI more appealing. 
+    Rock Paper and Scissors icons for the buttons 
 
 '''  
 
-#Importing the needed functions for Kivy
+#Importing the needed Kivy modules.
 from kivy.app import App
 from kivy.lang.builder import Builder
 from kivy.uix.widget import Widget
 
-#importing Random
+#importing Random module.
 import random
 
 #Importing the kv file. 
@@ -43,27 +45,32 @@ class RockPaperScissors (Widget):
     #Function for running the rock paper scissors game using player selection by button and random computer selection.
     def button_press (self, user_choice):
         self.user_choice = user_choice
-        print(user_choice)
+        self.ids.pchoice.text = user_choice
 
         #Creating the computer selection variable, it will randomly select rock, paper or scissors. 
-        computer = random.choice(['ROCK', 'PAPER', 'SCISSORS'])
-        print(computer)
+        computer = random.choice(['Rock', 'Paper', 'Scissors'])
+        self.ids.cchoice.text = computer
 
         #Checking to see if the user and computer have the same selection
         if user_choice == computer:
-            print ("It is a tie game")
+            self.ids.message.text = "It's a tie game"
+            
         
         #Checking to see if the user is the winner 
         elif is_win(user_choice, computer):
-            print("You Won!")
+            self.ids.message.text = "You Won!"
+            
+            
         #Computer won message. 
         else:
-            print("You Lost")
+            self.ids.message.text = "You lost."
+            
+            
 
 #Function for determining the winner
 def is_win(player, opponent):
     #returns true if the player wins 
-    if (player == "ROCK" and opponent == "SCISSORS") or (player == "PAPER" and opponent == "ROCK") or (player == "SCISSORS" and opponent == "PAPER"):
+    if (player == "Rock" and opponent == "Scissors") or (player == "Paper" and opponent == "Rock") or (player == "Scissors" and opponent == "Paper"):
         return True
 
 #Creating the game app class. 

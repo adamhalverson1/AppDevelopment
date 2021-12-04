@@ -1,6 +1,6 @@
 '''
 Rock Paper Scissors 
-    Version: 1.3
+    Version: 1.4
     Version Date: 12/3/2021
 
 Version Details:
@@ -16,10 +16,11 @@ Version Details:
     Added a slate grey background
     Results are being writted to the GUI by updating the label text. 
     Added labels that display the computer and user choice. 
-    Adjust label positions. 
+    Adjust label positions.
+    Score is being kept and is displayed in the GUI
+    Changed the verbiage for the won and lost messages to include the player and computer choices. 
 
 To Do
-    Keep count of the score and write that to the GUI. 
     Make the GUI more appealing. 
     Rock Paper and Scissors icons for the buttons 
 
@@ -53,18 +54,36 @@ class RockPaperScissors (Widget):
 
         #Checking to see if the user and computer have the same selection
         if user_choice == computer:
-            self.ids.message.text = "It's a tie game"
+            self.ids.message.text = "It's a tie game, you and the computer both picked " + user_choice
             
         
         #Checking to see if the user is the winner 
         elif is_win(user_choice, computer):
-            self.ids.message.text = "You Won!"
+            self.ids.message.text = "You Won! You picked " + user_choice + " and the computer picked " + computer
+
+            #Creating a variable for the player score
+            player_score = self.ids.player.text
+            #Converting the score to an integer
+            player_score = int(player_score) + 1
+            #Converting the player score back to a string 
+            player_score = str(player_score)
+            #Updating the label with the new player score 
+            self.ids.player.text = player_score
+
             
             
         #Computer won message. 
         else:
-            self.ids.message.text = "You lost."
-            
+            self.ids.message.text = "You lost. You picked " + user_choice + " and the computer picked " + computer
+
+            #Creating a variable for the computer score
+            computer_score = self.ids.computer.text
+            #Converting the score to an integer
+            computer_score = int(computer_score) + 1
+            #Converting the player score back to a string 
+            computer_score = str(computer_score)
+            #Updating the label with the new player score 
+            self.ids.computer.text = computer_score
             
 
 #Function for determining the winner

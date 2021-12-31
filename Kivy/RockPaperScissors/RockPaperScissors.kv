@@ -13,7 +13,7 @@
             text: "Reset"
             bold: True
             size_hint: .1, .1
-            pos_hint: {"right":1, "top":1}
+            pos_hint: {"right":.97, "top":1.1}
             on_press: root.button_press(user_choice='Reset')
     
         Label:
@@ -21,51 +21,52 @@
             text: "Let's play Rock, Paper, Scissors"
             font_size: 20
             bold: True
-            pos_hint: {"x":0, "top":1.4}
+            pos_hint: {"x":0, "top":1.45}
         
         Label:
             text: "Games Played"
             font_size: 16
             bold: True
-            pos_hint: {"x":.0, "top":1.3}
+            pos_hint: {"x":.0, "top":1.35}
         
         Label:
             id: games
             text: "0"
-            pos_hint: {"x":0, "top":1.25}
+            pos_hint: {"x":0, "top":1.30}
             
         
         Label:
             id: player
             text: "0"
-            pos_hint: {"right":.6, "top":1.25}
+            pos_hint: {"right":.6, "top":1.30}
         Label:
             text: "Player Score"
             font_size: 16
             bold: True
-            pos_hint: {"right":.6, "top":1.30}
+            pos_hint: {"right":.6, "top":1.35}
         Label:
             id: pchoice
             text: ""
-            pos_hint: {"right":.6, "top":1.20}
+            pos_hint: {"right":.6, "top":1.25}
         
         Label:
             id: computer
             text: "0"
-            pos_hint: {"right":1.38, "top":1.25}
+            pos_hint: {"right":1.38, "top":1.30}
         Label:
             text: "Computer Score"
             font_size: 16
             bold: True
-            pos_hint: {"right":1.38, "top":1.30}
+            pos_hint: {"right":1.38, "top":1.35}
         Label:
             id: cchoice
             text: ""
-            pos_hint: {"right":1.38, "top":1.20}
+            pos_hint: {"right":1.38, "top":1.25}
 
         BoxLayout:
             padding: 5
             spacing: 5
+            pos_hint: {'x': 0, 'y': .2 }
 
             Button:
                 id: rock
@@ -73,7 +74,7 @@
                 background_normal:'rocks.jpg'
                 background_down:'rocks.jpg'
                 on_press: root.button_press(user_choice='Rock')
-    
+                    
             Button:
                 id: paper
                 size_hint: .5, .5

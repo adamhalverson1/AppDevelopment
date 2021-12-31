@@ -1,14 +1,13 @@
 '''
-Version 2.1.2
+Version 2.2
     Version date: 9/29/2021  
         Complete rework of python code.
-        If else statements did not seem to be the key. 
-        Added some new functions that appear to be closer to the desired end result. 
-        Updated on_press in paint.kv to use the new function
-            root.set_color(self.background_color)
+        Removed code that had no finctionality. 
+
     Corrected button colors.
         Buttons background color now changes when selected, helping identify the current color selected.
             Not the desired shade, all have a blue hint, but it is a step in the right direction.
+    
     Seperated the Canvas and PaintWidgets and ClearButtoninto their own class. 
         This was to make the it so all of the widgets could be present on the screen at the same time.
             They are called in the App portion of main.py 
@@ -38,62 +37,46 @@ from kivy.core.window import Window
 
 #Creating the paint widget
 class PaintWidget(StackLayout):
-
-    #Color picking functionality.
-    def red_button(self):
-        if self.ids.redbtn == 'down':
-            def red(self):
-                2.55, .25, .25, 1
-
-    def set_color(self):
-        
-        orange = self.ids.orangebtn
-        yellow = self.ids.yellowbtn
-        green = self.ids.greenbtn
-        blue = self.ids.bluebtn
-        purple = self.ids.purplebtn
-        white = self.ids.whitebtn
-        black = self.ids.blackbtn
+    pass
 
 
 class ClearButton(Widget):
-    #Clear button functionality.
-    def clear_canvas(self):        
-        self.canvas.clear()
-        saved = self.children[:]
-        self.clear_widgets()        
-        for widget in saved:
-            self.add_widget(widget)
+    pass
 
 #clear = ClearButton.clear_canvas
 
-class Canvas(RelativeLayout):
-    #Touch input functionality.
+class RedButton (Button):
+
     def on_touch_down(self, touch):
-    
         if Widget.on_touch_down(self, touch):
-            return True
+                return True
 
         with self.canvas:
-            Color(0, 0, 0, 1)
+            Color(2.55, .25, .25, 1)
             Line(circle=(touch.x, touch.y, 2), width=2)
-            touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)     
-
+            touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)
+    
     #Touch movement functionality.
     def on_touch_move(self, touch):                               
         if 'current_line' in touch.ud:
             touch.ud['current_line'].points += (touch.x, touch.y)
 
+class Canvas(RelativeLayout):
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs) 
 
 # Create the App class       
 class PaintApp(App):
 
     def build(self):
-        paint_widget = PaintWidget()
-        clear_button = ClearButton()
+   
+        red_btn = RedButton()
+  
         canvas = Canvas()
-        canvas.add_widget(clear_button)
-        canvas.add_widget(paint_widget)
+
+  
+        canvas.add_widget(red_btn)
 
         return canvas
 

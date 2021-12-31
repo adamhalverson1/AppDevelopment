@@ -1,4 +1,11 @@
-<PaintWidget>:
+<Canvas>:
+    RelativeLayout:
+        canvas:
+            Color:
+                rgb: 255, 255, 255, 1
+            Rectangle:
+                size: root.width, root.height
+
     StackLayout:
         orientation: 'lr-tb'
         size: .125, 1
@@ -9,7 +16,7 @@
             size_hint: .125, .1
             background_color: 2.55, .25, .25, 1
             group: "Color"
-            on_press: root.red_button()
+
 
         ToggleButton:
             #text: "Orange Button"
@@ -67,15 +74,7 @@
             size_hint: .125 , .1
             background_color: 0, 0, 0, 1
             group: "Color"
-            on_press: root.set_color()
-
-<Canvas>:
-    RelativeLayout:
-        canvas:
-            Color:
-                rgb: 255, 255, 255, 1
-            Rectangle:
-                size: root.width, root.height
+            on_press: root.on_touch_down("Black")
 
 <ClearButton>:
     FloatLayout:

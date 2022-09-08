@@ -56,14 +56,7 @@ Builder.load_file('RockPaperScissors.kv')
 
 #Creating the class for Rock Paper Scissors. This is left intentionally blank at this time. 
 class RockPaperScissors (Widget):
-    ads = KivMob("ca-app-pub-3345304889044888~9817784347".APP)
-
-    def __init__(self, **kwargs):
-        super(Widget, self).__init__(**kwargs)
-        self.ads.new_banner("ca-app-pub-3345304889044888/6748235043".BANNER,False)
-        self.ads.request_banner()
-        self.ads.show_banner()
-         
+        
     #Function for running the rock paper scissors game using player selection by button and random computer selection.
     def button_press (self, user_choice):
         self.user_choice = user_choice
@@ -145,16 +138,24 @@ def is_win(player, opponent):
     if (player == "Rock" and opponent == "Scissors") or (player == "Paper" and opponent == "Rock") or (player == "Scissors" and opponent == "Paper"):
         return True
 
+class myAds (Widget):
+    def build(self):
+        self.ads = KivMob("ca-app-pub-3345304889044888~9817784347".APP)
+        self.ads.new_banner("ca-app-pub-3345304889044888/6748235043".BANNER,False)
+        self.ads.request_banner()
+        self.ads.show_banner()
    
-
 #Creating the game app class. 
 class Game(App):
 
     def build(self):
-        return RockPaperScissors()
+        ads = myAds()
+        rps = RockPaperScissors()
+
+        rps.add_widget(ads)
+
+        return rps
 
 #Runnig the app.
 if __name__ == '__main__':
     Game().run()
-
-
